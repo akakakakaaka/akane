@@ -1,0 +1,90 @@
+
+<div class="posts-box">
+
+<div class="title">
+<p><%= @post.name %></p>
+</div>
+
+<div class="postlike">
+<div class="image">
+<p><%= image_tag @post.image_url, size: "320x250" if @post.image? %></p>
+</div>
+
+<div class="postdetail"> 
+<table>
+ <tr>
+  <p><th>エリア</th>
+  <td><%= @post.area %></td></p>
+ </tr>
+ <tr>
+  <p><th>価格</th>
+  <td><%= @post.price %>円</td></p>
+ </tr>
+  <p><th>最大人数</th>
+  <td><%= @post.number %>人</td></p>
+ <tr>
+  <p><th>住所</th>
+  <td><%= @post.address %></td></p>
+  </tr>
+  <tr>
+  <p><th>おすすめポイント</th>
+  <td><%= @post.about %></td></p>
+  </tr>
+  <tr>
+  <p><th>総合評価</th>
+  <td><span class="star-rating">
+  <span class="star-rating-front" style="width: <%= getPercent(@post.overall) %>%;">★★★★★</span>
+  <span class="star-rating-back">★★★★★</span>
+</span></td></p>
+ </table>
+</div>
+</div>       
+    <div class="heart">
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@post) %>
+        <%= button_to post_like_path(@post), method: :delete do %></div>
+          <i class="far fa-heart like-btn" ></i>
+          <%= @post.likes.count %>
+        <% end %>
+      <% else %>
+        <%= button_to post_likes_path(@post), method: :post do %>
+          <i class="far fa-heart like-btn" ></i>
+        <%= @post.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= @post.likes.count %>
+    <% end %>
+    </div>
+    
+    <% if user_signed_in? %>
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+      <div class="comment1"><%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする 
+      <% end %>
+    <% end %>
+  <% end %>
+      </div>
+  
+
+  <div class="comment">
+  <コメント一覧><% @comments.each do |c| %>
+    <div>
+      <%= c.user.email unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+      <br>
+  <% end %>
+  </div>
+
+  <div class="editdelete">
+  <p><%= link_to "トップページへ", posts_path %></p>
+  <p><%= link_to "編集する", edit_post_path(@post.id) %></p>
+  <p><%= button_to "削除する", post_path(@post.id), method: :delete %></p>
+  </div>
+
+
+
+

@@ -1,0 +1,68 @@
+<div class="fadeindown">
+ <div class="balloon1">
+ <p>「ダンス練習したいけど家では無理！」</p>
+ </div>
+ <div class="balloon2">
+ <p>「でもスタジオは高い！」</p>
+ </div>
+ <div class="balloon3">
+ <p>「みんなどこで練習しているんだろう？」</p>
+ </div>
+ <p>こんなお悩みを抱えている人は必見！</p>
+ <p>あなたにぴったりの練習場所、ここで見つけてみませんか？</p>
+ <p>会員登録・ログインで投稿やコメント、詳細表示ができます。</p>
+</div>
+
+
+<div class="posts-container">
+
+
+<div class="postall">
+  <% @posts.each do |t| %>
+    <div class="post">
+      <div class="placeimage">
+      <%= image_tag t.image_url, size: "230x150" if t.image? %>
+      </div>
+      
+      <p><%= t.user.email %></p>
+      <p>名前: <%= t.name %></p>
+      <p>エリア: <%= t.area %></p>
+      <p>価格: <%= t.price %>円</p>
+      <p>最大人数: <%= t.number %>人</p>
+
+      <p>総合評価：
+      <span class="star-rating">
+         <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+         <span class="star-rating-back">★★★★★</span>
+      </span> 
+      </p>
+      
+
+  <% if user_signed_in? %>
+      <% if current_user.already_liked?(t) %>
+          <%= button_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+          <i class="far fa-heart"></i>
+              <%= t.likes.count %>
+          <% end %>
+      <% else %>
+          <%= button_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+          <i class="far fa-heart"></i>
+              <%= t.likes.count %>
+          <% end %>
+      <% end %>
+  <% else %>
+      <p>いいねの数 = </p><%= t.likes.count %>
+  <% end %>
+     
+
+      
+    <div class="detail">
+      <%= link_to "詳細へ", post_path(t.id) %>
+    </div>
+    
+    <%= button_to "削除する", post_path(t.id), method: :delete %>
+    
+    </div>
+  <% end %>
+</div>    
+</div>

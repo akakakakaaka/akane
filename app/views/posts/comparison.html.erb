@@ -1,0 +1,27 @@
+<div class="fullpage">
+<div class="tab_container" id="tab1_content">
+  <input id="tab1" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="tab1">価格</label>
+  <input id="tab2" type="radio" name="tab_item">
+  <label class="tab_item" for="tab2">最大人数</label>
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+      <div class="price">
+      <li><%= link_to "0~1000", posts_result_path %></li>
+      <li><%= link_to "1000~5000", posts_resultone_path %></li>
+      <li><%= link_to "5000~10000", posts_resulttwo_path %></li></p>
+      </div>
+    </div>
+
+  <div class="tab_content" id="tab2_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+      <div class="number">
+      <li><%= link_to "1~10", posts_number_path %></li>
+      <li><%= link_to "10~50", posts_numberone_path %></li>
+      <li><%= link_to "50~100", posts_numbertwo_path %></li></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

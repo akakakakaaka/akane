@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Akanen</title>
+    <script src="https://kit.fontawesome.com/3295d0af97.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+<body>
+ <header>
+  <h1>シェアダン ~練習場所共有サイト~</h1>
+
+  <div class="hamburger-menu">
+        <input type="checkbox" id="menu-btn-check">
+        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+        
+  
+        <div class="menu-content"> 
+   <ul>
+    <% if user_signed_in? %>
+     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+     <li><%= link_to "トップページ", posts_path %></li>
+     <li><%= link_to "新規投稿", new_post_path %></li>
+     <li><%= link_to "比較項目別検索ページ", posts_comparison_path %></li>
+     <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+     
+
+    <% else %>
+     <li><%= link_to "新規登録", new_user_registration_path %></li>
+     <li><%= link_to "ログイン", new_user_session_path %></li>
+     <li><%= link_to "トップページ", posts_path %></li>
+     <li><%= link_to "新規投稿へ", new_post_path %></li>
+     <li><%= link_to "比較項目別検索ページ", posts_comparison_path %></li>
+     
+     </div>
+
+    <% end %>
+   </ul>
+  </div>
+ </header>
+ <main>
+ <div class="loading">
+          <div class="loading-wrap">
+          <i class="fa-regular fa-heart fa-3x fa-spin"></i>
+          </div>
+        </div>
+        <script>
+          const loading = document.querySelector('.loading');
+          window.addEventListener('load', () => {
+            setTimeout(function() {
+              loading.classList.add('hide');
+            }, 1000);
+          });
+        </script>
+  <%= yield %>
+
+ </main>
+ <footer>
+      <p>Copyright © AkanenDance All Rights Reserved.</p>
+    </footer>
+</body>
+ 
+    
+</html>

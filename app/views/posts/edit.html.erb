@@ -1,0 +1,19 @@
+<%= form_for @post do |f| %>
+    
+    <p>場所の名前
+    <%= f.text_field :name, :size => 70 %></p>
+    <p>価格
+    <%= f.text_field :price, :size => 70 %> </p>
+    <p>地域
+    <%= f.text_field :area, :size => 70 %> </p>
+    <p>最大人数
+    <%= f.text_field :number, :size => 70 %> </p>
+    <p>住所
+    <%= f.text_field :address, :size => 70 %> </p>
+    <p>おすすめポイント
+    <%= f.text_field :about, :size => 80 %> </p>
+    <p>画像
+    <%= f.file_field :image, :size => 70 %> </p>
+
+    <%= f.submit "編集する" %>
+  <% end %>

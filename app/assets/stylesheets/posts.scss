@@ -1,0 +1,369 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+/*　以下新規投稿ページの星用のCSS　*/
+
+  .post_form{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .post_form input[type='radio']{
+    display: none;
+  }
+  .post_form label{
+    position: relative;
+    padding: 10px 10px 0;
+    color: gray;
+    cursor: pointer;
+    font-size: 30px; /*星の大きさを変更するときはここ*/
+  }
+  .post_form label .text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
+    color: gray;
+  }
+  .post_form label:hover,
+  .post_form label:hover ~ label,
+  .post_form input[type='radio']:checked ~ label{
+    color: #ffcc00;
+  }
+
+
+/*　以下一覧ページの星用のCSS　*/
+
+  .star-rating {
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 1em;
+    font-size: 25px;
+  }
+  .star-rating-front {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffcc33;
+  }
+  .star-rating-back {
+    display: inline-block;
+    color: #ccc;
+
+  }
+
+  .postall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+  }
+  .post {
+    width: calc(33%);
+    border: solid;
+    width:25%;
+    height:450px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin: 30px;
+    font-size:18px;
+    border-radius: 20px;
+    text-align: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  
+
+  .detail{
+    font-weight: lighter;
+    font-size: smaller;
+    padding-top: 30px;
+
+  }
+
+  
+  .postdetail{
+    width: 600px;
+    margin-left: 50px;
+    padding-right: 50px;
+    padding-top: 35px;
+    text-align: right 50px;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 700px;
+  }
+  
+  .postdetail tr {
+    background-color: #e6f1f6;
+  }
+  .postdetail tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  .postdetail th, .postdetail td {
+    padding: 10px;
+  }
+  .postdetail th {
+    font-weight: bold;
+    text-align: center;
+    width: 20%;
+    min-width: 4em;
+  }
+
+  .comment-wrapper{
+    width: 160px;
+    margin: 30px auto;
+  }
+
+  .image{
+    padding-left: 5%;
+    padding-top: 30px;
+    border-radius: 20px;
+    margin-top: 30px;
+  }
+
+  .postlike{
+    display: flex;
+  }
+
+  .title{
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 35px;
+  }
+  .editdelete{
+    margin-right: 10px;
+    text-align: right;
+    margin-left: auto;
+    
+  }
+  
+  
+
+  .button_to{
+    width: 20px;
+    height:10px;
+}
+  .comment{
+    margin-right: auto;
+    margin-left: 60px;
+    width: 30%;
+    font-size: large;
+  }
+ .comment1{
+  text-align: right;
+  margin-right: 20%;
+ }
+  .heart{
+    margin-left: 85%;
+    padding-top: 5px;
+    
+  }
+  .content{
+    padding: 1em 0.5em;
+    line-height: 3;
+    width: 50%;
+  }
+  .tab_container {
+    padding-bottom: 1em;
+    background-color: #fff;
+    border:1px solid #37beb0;
+    margin: 0 auto;}
+  .tab_item {
+    width: calc(100%/2);
+    padding:15px 0;
+    border-bottom: 3px solid #37beb0 ;
+    background-color: #ececec;
+    text-align: center;
+    color: #37beb0 ;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    overflow: hidden,
+  }
+  .tab_item:hover {
+    opacity: 0.75;
+  }
+  input[name="tab_item"] {
+    display: none;
+  }
+  .tab_content {
+    display: none;
+    padding: 1em 1em 0;
+    clear: both;
+    overflow: hidden;
+  }
+  #tab1:checked ~ #tab1_content,
+  #tab2:checked ~ #tab2_content{
+    display: block;
+  }
+  .tab_container input:checked + .tab_item {
+    background-color: #37beb0 ;
+    color: #fff;
+  }
+
+.fullpage{
+  height: 100%;
+  background-color: #94c2e3;
+}
+.fadeindown{
+  padding-top: 60px;
+  padding-bottom: 60px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100px);
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  font-weight: bolder;
+}
+
+@keyframes fadeIn{
+  0% {
+  }
+  100% {
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+
+.balloon1 {
+  position: relative;
+  padding: 20px;
+  background-color: #f1f4d8;
+  border-radius: 15px;
+  margin-top: 0 auto;
+  margin-left: 30%;
+  width: 40%;
+  }
+  
+  .balloon1::before {
+  content: '';
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background-color: #f1f4d8;
+  right: -35px;
+  bottom: 15px;
+  width: 30px;
+  height: 30px;
+  }
+  
+  .balloon1::after {
+  content: '';
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background-color: #f1f4d8;
+  right: -55px;
+  bottom: 10px;
+  width: 15px;
+  height: 15px;
+  }
+
+  .balloon2 {
+    position: relative;
+    padding: 20px;
+    background-color: #f1f4d8;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 20%;
+    width: 40%;
+    }
+    
+    .balloon2::before {
+    content: '';
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background-color: #f1f4d8;
+    left: -35px;
+    bottom: 15px;
+    width: 30px;
+    height: 30px;
+    }
+    
+    .balloon2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background-color: #f1f4d8;
+    left: -55px;
+    bottom: 10px;
+    width: 15px;
+    height: 15px;
+    }
+
+
+    .balloon3 {
+      position: relative;
+      padding: 20px;
+      background-color: #f1f4d8;
+      border-radius: 15px;
+      margin-left: 35%;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      width: 40%;
+      }
+      
+      .balloon3::before {
+      content: '';
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      background-color: #f1f4d8;
+      right: -35px;
+      bottom: 15px;
+      width: 30px;
+      height: 30px;
+      }
+      
+      .balloon3::after {
+      content: '';
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      background-color: #f1f4d8;
+      right: -55px;
+      bottom: 10px;
+      width: 15px;
+      height: 15px;
+      }
+
+  .field{
+    position: relative;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  .placeimage{
+    text-align: center;
+    padding-top: 5px;
+  }
+
+  .price{
+    text-align: center;
+    font-size: larger;
+    margin: 0 auto;
+    
+  }
+
+  .number{
+    text-align: center;
+    font-size: larger;
+    margin: 0 auto;
+    
+  }

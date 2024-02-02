@@ -1,0 +1,34 @@
+<h1 style="font-size: 32px;">ユーザーマイページ</h1>
+<div class="mypageall">
+<div class="information">
+<%= image_tag @user.image_url, size: "250x200" if @user.image? %>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+</div>
+
+<div class="postsee">
+<h3>ユーザーの投稿一覧</h3>
+<% @user.posts.each do |t| %>
+  <%= image_tag t.image_url, size: "255x150" if t.image? %>
+  <%= t.name %>
+  
+  
+<% end %>
+
+<!-- 以下はいいね機能を実装している場合-->
+<h3>ユーザーがいいねした投稿一覧</h3>
+<% @user.liked_posts.each do |t| %>
+  <%= t.user.name %>
+  <%= t.body %>
+<% end %>
+<!-- ここまで-->
+
+<%= link_to "Post一覧に戻る", posts_path %>
+</div>
+</div>

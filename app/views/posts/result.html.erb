@@ -1,0 +1,44 @@
+<div class="postall">
+  <% @posts_1_to_1000.each do |t| %>
+    <div class="post">
+      <%= image_tag t.image_url, size: "255x150" if t.image? %>
+      <p><%= t.user.email %></p>
+      <p>名前:&nbsp;<%= t.name %></p>
+      <p>エリア: <%= t.area %></p>
+      <p>価格: <%= t.price %>円</p>
+      <p>最大人数: <%= t.number %>人</p>
+
+      <h4>総合評価：
+      <span class="star-rating">
+         <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+         <span class="star-rating-back">★★★★★</span>
+      </span> 
+      </h4>
+      
+
+  <% if user_signed_in? %>
+      <% if current_user.already_liked?(t) %>
+          <%= button_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+              <p>いいねを取り消す</p><%= t.likes.count %>
+          <% end %>
+      <% else %>
+          <%= button_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+            <i class="far fa-heart"></i><%= t.likes.count %>
+          <% end %>
+      <% end %>
+  <% else %>
+      <p>いいねの数 = </p><%= t.likes.count %>
+  <% end %>
+     
+
+      
+    <div class="detail">
+      <%= link_to "詳細へ", post_path(t.id) %>
+    </div>
+    
+    <%= button_to "削除する", post_path(t.id), method: :delete %>
+    
+    </div>
+  <% end %>
+</div>    
+</div>
